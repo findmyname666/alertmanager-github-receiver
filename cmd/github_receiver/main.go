@@ -21,6 +21,7 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 
@@ -106,12 +107,14 @@ func mustServeWebhookReceiver(receiver *alerts.ReceiverHandler) *http.Server {
 		Handler: mux,
 	}
 	rtx.Must(httpx.ListenAndServeAsync(srv), "Failed to start webhook receiver server")
+	log.Printf("HTTP receiver for Alertmanager started on '%s'", *receiverAddr)
+
 	return srv
 }
 
 func main() {
 	flag.Parse()
-	rtx.Must(flagx.ArgsFromEnv(flag.CommandLine), "Failed to read ArgsFromEnv")
+	rtx.Must(flagx.ArgsFromEnvWithLog(flag.CommandLine, false), "Failed to read ArgsFromEnv")
 	if (*authtoken == "" && len(authtokenFile.Bytes) == 0) || *githubOrg == "" || *githubRepo == "" {
 		flag.Usage()
 		osExit(1)

@@ -66,8 +66,6 @@ Alertmanager URL: {{.Data.ExternalURL}}
     - {{$key}} = {{$value -}}
   {{end}}
 {{end}}
-
-TODO: add graph url from annotations.
 `
 
 	// DefaultTitleTmpl will be used to format the title string if it's not
