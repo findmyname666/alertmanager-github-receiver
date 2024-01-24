@@ -48,8 +48,8 @@ var (
 	enableAutoClose = flag.Bool("enable-auto-close", false, "Once an alert stops firing, automatically close open issues.")
 	labelOnResolved = flag.String("label-on-resolved", "", "Once an alert stops firing, apply this label.")
 	enableInMemory  = flag.Bool("enable-inmemory", false, "Perform all operations in memory, without using github API.")
-	receiverAddr    = flag.String("webhook.listen-address", ":9393", "Listen on address for new alertmanager webhook messages.")
-	alertLabel      = flag.String("alertlabel", "alert:boom:", "The default label applied to all alerts. Also used to search the repo to discover exisitng alerts.")
+	receiverAddr    = flag.String("webhook.listen-address", ":9393", "Listen on address for new Alertmanager webhook messages.")
+	alertLabel      = flag.String("alertlabel", "alert:boom:", "The default label applied to all alerts. Also used to search the repo to discover existing alerts.")
 	extraLabels     = flagx.StringArray{}
 	titleTmplFile   = flagx.FileBytes(alerts.DefaultTitleTmpl)
 	alertTmplFile   = flagx.FileBytes(alerts.DefaultAlertTmpl)
